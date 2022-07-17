@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_routes/router.dart';
+import 'package:flutter_routes/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,8 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: FirstScreen(),
+    return MaterialApp(
+      initialRoute: Routes.home,
+      onGenerateRoute: (RouteSettings settings) =>
+          MyRouter.generateRoute(settings),
     );
   }
 }
@@ -24,6 +28,8 @@ class FirstScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
+            Navigator.of(context).pushNamed(Routes.secondScreen,
+                arguments: 'This is second screen');
           },
           child: const Text(
             'First screen',

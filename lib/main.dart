@@ -24,6 +24,13 @@ class FirstScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const SecondPage(
+                  title: 'Second Screen',
+                ),
+              ),
+            );
           },
           child: const Text(
             'First screen',

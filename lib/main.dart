@@ -9,8 +9,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: FirstScreen(),
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const FirstScreen(),
+        '/secondScreen': (context) => const SecondPage(title: 'second screen'),
+      },
     );
   }
 }
@@ -24,6 +28,7 @@ class FirstScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
+            Navigator.of(context).pushNamed('/secondScreen');
           },
           child: const Text(
             'First screen',
